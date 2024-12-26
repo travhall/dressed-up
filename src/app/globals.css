@@ -1,21 +1,116 @@
+/* src/app/globals.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Foundation */
+    --surface-primary: 300 20% 98%;
+    --surface-secondary: 300 15% 95%;
+    --surface-tertiary: 300 10% 92%;
+
+    /* UI Elements */
+    --ui-nav-surface: 300 15% 95%;
+    --ui-nav-text: 300 6% 38%;
+    --ui-nav-hover: 300 8% 50%;
+
+    --ui-button: 300 35% 35%;
+    --ui-button-hover: 300 40% 30%;
+    --ui-button-active: 300 14% 66%;
+    --ui-button-text: 0 0% 100%;
+
+    --ui-input-surface: 40 20% 98%;
+    --ui-input-border: 300 15% 95%;
+    --ui-input-focus: 300 19% 80%;
+
+    --ui-card-surface: 40 20% 98%;
+    --ui-card-border: 40 25% 95%;
+
+    /* Content */
+    --content-primary: 300 30% 15%;
+    --content-secondary: 300 25% 25%;
+    --content-tertiary: 300 20% 35%;
+    --content-accent: 40 23% 76%;
+
+    /* States */
+    --state-success-surface: 142 69% 29%;
+    --state-success-text: 0 0% 100%;
+    --state-error-surface: 0 84% 60%;
+    --state-error-text: 0 0% 100%;
+
+    /* Focus states */
+    --focus-ring: 300 30% 40%;
+    --focus-ring-offset: 300 20% 98%;
+  }
+
+  .dark {
+    --surface-primary: 300 6% 12%;
+    --surface-secondary: 300 6% 15%;
+    --surface-tertiary: 300 6% 18%;
+
+    --ui-nav-surface: 300 6% 15%;
+    --ui-nav-text: 40 20% 98%;
+    --ui-nav-hover: 40 23% 76%;
+
+    --ui-button: 40 23% 76%;
+    --ui-button-hover: 40 19% 68%;
+    --ui-button-active: 40 10% 52%;
+    --ui-button-text: 300 6% 12%;
+
+    --ui-input-surface: 300 6% 15%;
+    --ui-input-border: 300 8% 20%;
+    --ui-input-focus: 40 23% 76%;
+
+    --ui-card-surface: 300 6% 15%;
+    --ui-card-border: 300 6% 18%;
+
+    --content-primary: 40 20% 98%;
+    --content-secondary: 40 23% 76%;
+    --content-tertiary: 40 19% 68%;
+    --content-accent: 300 14% 66%;
+
+    --focus-ring: 40 23% 76%;
+    --focus-ring-offset: 300 6% 12%;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .h1 {
+    @apply font-display text-4xl md:text-5xl lg:text-6xl leading-tight;
+  }
+
+  .h2 {
+    @apply font-display text-3xl md:text-4xl lg:text-5xl leading-tight;
+  }
+
+  .h3 {
+    @apply font-display text-2xl md:text-3xl lg:text-4xl leading-tight;
+  }
+
+  .h4 {
+    @apply font-display text-xl md:text-2xl lg:text-3xl leading-tight;
+  }
+
+  .display-heading {
+    @apply font-display text-content-primary;
+  }
+
+  .link-hover {
+    @apply text-content-primary hover:text-content-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ui-button rounded-md;
+  }
+
+  .card-base {
+    @apply bg-ui-card-surface border border-ui-card-border rounded-lg p-6;
+  }
+
+  .input-base {
+    @apply w-full px-3 py-2 bg-ui-input-surface border border-ui-input-border rounded-md
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ui-button 
+    disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .container-base {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
