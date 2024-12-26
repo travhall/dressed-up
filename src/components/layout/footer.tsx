@@ -1,32 +1,80 @@
 // src/components/layout/footer.tsx
+import {
+  businessInfo,
+  formatPhoneNumber,
+  getFormattedAddress,
+} from "@/lib/config/contact";
+import { ThemeToggle } from "../ui/theme-toggle";
+
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+  const { phone, email } = businessInfo.contact;
+
   return (
-    <footer className="bg-surface-primary py-12">
+    <footer className="bg-surface-primary py-12" role="contentinfo">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
-            <h3 className="font-display text-lg mb-4">Dressed Up</h3>
-            <p className="text-content-secondary">
-              Special occasion dress boutique
-            </p>
+            <h3 className="font-display text-lg mb-4">{businessInfo.name}</h3>
+            <p className="text-content-secondary">{businessInfo.tagline}</p>
           </div>
+
           <div>
             <h3 className="font-display text-lg mb-4">Visit</h3>
-            <p className="text-content-secondary">15 W Central St.</p>
-            <p className="text-content-secondary">Chippewa Falls, WI 54729</p>
+            <address className="text-content-secondary not-italic">
+              <a
+                href={businessInfo.address.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+                aria-label="Get directions to our store"
+              >
+                {getFormattedAddress()}
+              </a>
+            </address>
           </div>
+
           <div>
             <h3 className="font-display text-lg mb-4">Hours</h3>
-            <p className="text-content-secondary">Tuesday-Thursday</p>
-            <p className="text-content-secondary">10am-4pm</p>
-          </div>
-          <div>
-            <h3 className="font-display text-lg mb-4">Contact</h3>
-            <p className="text-content-secondary">715-861-3899</p>
-            <p className="text-content-secondary">
-              dressedupfashions@gmail.com
+            {businessInfo.hours.regular.map(({ days, hours }) => (
+              <div key={days} className="text-content-secondary">
+                <p>{days}</p>
+                <p>{hours}</p>
+              </div>
+            ))}
+            <p className="text-content-secondary mt-2">
+              {businessInfo.hours.notes}
             </p>
           </div>
+
+          <div>
+            <h3 className="font-display text-lg mb-4">Contact</h3>
+            <div className="space-y-2">
+              <a
+                href={`tel:${phone}`}
+                className="text-content-secondary block hover:underline"
+                aria-label="Call our store"
+              >
+                {formatPhoneNumber(phone)}
+              </a>
+              <a
+                href={`mailto:${email}`}
+                className="text-content-secondary block hover:underline"
+                aria-label="Email us"
+              >
+                {email}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-ui-card-border text-content-secondary text-sm">
+          <div className="md:hidden mb-8">
+            <ThemeToggle />
+          </div>
+          <p>
+            &copy;{currentYear} {businessInfo.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -3,10 +3,11 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, Clock } from "lucide-react";
+import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { CalendarDialog } from "@/components/ui/calendar-dialog";
+import { businessInfo, formatPhoneNumber } from "@/lib/config/contact";
 
 interface ContactForm {
   name: string;
@@ -32,8 +33,14 @@ export default function Contact() {
     setIsSubmitting(false);
   };
 
+  const { phone, email } = businessInfo.contact;
+  const formattedPhone = formatPhoneNumber(phone);
+
   return (
-    <section className="py-20 bg-surface-secondary">
+    <section
+      className="py-20 bg-surface-secondary"
+      aria-labelledby="contact-heading"
+    >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8">
           {/* Form */}
@@ -42,7 +49,10 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             className="card-base"
           >
-            <h2 className="display-heading text-display-lg mb-6">
+            <h2
+              id="contact-heading"
+              className="display-heading text-display-lg mb-6"
+            >
               Start a Conversation
             </h2>
             <form
@@ -63,9 +73,13 @@ export default function Contact() {
                   type="text"
                   className="input-base w-full"
                   aria-invalid={errors.name ? "true" : "false"}
+                  aria-describedby={errors.name ? "name-error" : undefined}
                 />
                 {errors.name && (
-                  <p className="text-state-error-surface text-sm mt-1">
+                  <p
+                    id="name-error"
+                    className="text-state-error-surface text-sm mt-1"
+                  >
                     {errors.name.message}
                   </p>
                 )}
@@ -90,9 +104,13 @@ export default function Contact() {
                   type="email"
                   className="input-base w-full"
                   aria-invalid={errors.email ? "true" : "false"}
+                  aria-describedby={errors.email ? "email-error" : undefined}
                 />
                 {errors.email && (
-                  <p className="text-state-error-surface text-sm mt-1">
+                  <p
+                    id="email-error"
+                    className="text-state-error-surface text-sm mt-1"
+                  >
                     {errors.email.message}
                   </p>
                 )}
@@ -117,9 +135,13 @@ export default function Contact() {
                   type="tel"
                   className="input-base w-full"
                   aria-invalid={errors.phone ? "true" : "false"}
+                  aria-describedby={errors.phone ? "phone-error" : undefined}
                 />
                 {errors.phone && (
-                  <p className="text-state-error-surface text-sm mt-1">
+                  <p
+                    id="phone-error"
+                    className="text-state-error-surface text-sm mt-1"
+                  >
                     {errors.phone.message}
                   </p>
                 )}
@@ -132,9 +154,13 @@ export default function Contact() {
                 <CalendarDialog
                   onSelect={(date) => setValue("eventDate", date)}
                   aria-invalid={errors.eventDate ? "true" : "false"}
+                  aria-describedby={errors.eventDate ? "date-error" : undefined}
                 />
                 {errors.eventDate && (
-                  <p className="text-state-error-surface text-sm mt-1">
+                  <p
+                    id="date-error"
+                    className="text-state-error-surface text-sm mt-1"
+                  >
                     {errors.eventDate.message}
                   </p>
                 )}
@@ -152,9 +178,15 @@ export default function Contact() {
                   id="message"
                   className="input-base w-full h-32"
                   aria-invalid={errors.message ? "true" : "false"}
+                  aria-describedby={
+                    errors.message ? "message-error" : undefined
+                  }
                 />
                 {errors.message && (
-                  <p className="text-state-error-surface text-sm mt-1">
+                  <p
+                    id="message-error"
+                    className="text-state-error-surface text-sm mt-1"
+                  >
                     {errors.message.message}
                   </p>
                 )}
@@ -177,23 +209,57 @@ export default function Contact() {
                 Quick Contact
               </h3>
               <div className="space-y-4">
+                <a
+                  href={`tel:${phone}`}
+                  className="flex items-center gap-3 hover:text-ui-button transition-colors"
+                  aria-label="Call our store"
+                >
+                  <Phone
+                    className="h-5 w-5 text-ui-button"
+                    aria-hidden="true"
+                  />
+                  <span>{formattedPhone}</span>
+                </a>
+                <a
+                  href={`mailto:${email}`}
+                  className="flex items-center gap-3 hover:text-ui-button transition-colors"
+                  aria-label="Email us"
+                >
+                  <Mail className="h-5 w-5 text-ui-button" aria-hidden="true" />
+                  <span>{email}</span>
+                </a>
                 <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-ui-button" />
-                  <span>555-555-5555</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Mail className="h-5 w-5 text-ui-button" />
-                  <span>contact@dressedup.com</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Clock className="h-5 w-5 text-ui-button" />
+                  <Clock
+                    className="h-5 w-5 text-ui-button"
+                    aria-hidden="true"
+                  />
                   <div>
-                    <p>Tuesday-Thursday: 10am-5pm</p>
-                    <p className="text-content-secondary">
-                      Private appointments available
+                    {businessInfo.hours.regular.map(({ days, hours }) => (
+                      <p key={days}>{`${days}: ${hours}`}</p>
+                    ))}
+                    <p className="text-content-secondary mt-1">
+                      {businessInfo.hours.notes}
                     </p>
                   </div>
                 </div>
+                <a
+                  href={businessInfo.address.googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 hover:text-ui-button transition-colors"
+                  aria-label="Get directions to our store"
+                >
+                  <MapPin
+                    className="h-5 w-5 text-ui-button"
+                    aria-hidden="true"
+                  />
+                  <address className="not-italic">
+                    {businessInfo.address.street}
+                    <br />
+                    {businessInfo.address.city}, {businessInfo.address.state}{" "}
+                    {businessInfo.address.zip}
+                  </address>
+                </a>
               </div>
             </div>
           </motion.div>
