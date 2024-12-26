@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
   { label: "Our Story", href: "/story" },
-  { label: "Collections", href: "/collections" },
-  { label: "What To Expect", href: "/visit" },
+  { label: "Our Collections", href: "/collections" },
+  { label: "Your Visit", href: "/visit" },
   { label: "Get In Touch", href: "/contact" },
 ];
 
@@ -35,7 +35,7 @@ export function Nav() {
   return (
     <nav className="fixed w-full top-0 z-50">
       <div className="bg-surface-primary border-b border-ui-card-border">
-        <div className="container-base">
+        <div className="container mx-auto">
           <div className="flex justify-between h-16">
             <div className="flex items-center">
               <Link

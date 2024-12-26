@@ -29,7 +29,14 @@ export function Footer() {
                 className="hover:underline"
                 aria-label="Get directions to our store"
               >
-                {getFormattedAddress()}
+                {getFormattedAddress()
+                  .split("\n")
+                  .map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      {i === 0 && <br />}
+                    </span>
+                  ))}
               </a>
             </address>
           </div>
@@ -37,12 +44,12 @@ export function Footer() {
           <div>
             <h3 className="font-display text-lg mb-4">Hours</h3>
             {businessInfo.hours.regular.map(({ days, hours }) => (
-              <div key={days} className="text-content-secondary">
-                <p>{days}</p>
-                <p>{hours}</p>
+              <div key={days} className="text-content-secondary mb-2">
+                <p className="font-light">{days}</p>
+                <p className="font-bold">{hours}</p>
               </div>
             ))}
-            <p className="text-content-secondary mt-2">
+            <p className="text-content-secondary italic mt-4">
               {businessInfo.hours.notes}
             </p>
           </div>

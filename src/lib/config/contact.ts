@@ -33,5 +33,5 @@ export function formatPhoneNumber(phone: string): string {
 
 export function getFormattedAddress(): string {
   const { street, city, state, zip } = businessInfo.address;
-  return `${street}, ${city}, ${state} ${zip}`;
+  return `${street}\n${city}, ${state} ${zip}`;
 }

@@ -4,27 +4,41 @@
 import { motion } from "framer-motion";
 import { Clock, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { businessInfo } from "@/lib/config/contact";
 import type { LucideIcon } from "lucide-react";
 
 interface VisitOption {
   title: string;
   description: string;
-  details: string[];
   icon: LucideIcon;
+  details: {
+    text: string;
+    emphasis?: boolean;
+  }[];
 }
+
+const regularHours = businessInfo.hours.regular[0];
 
 const VISIT_OPTIONS: VisitOption[] = [
   {
     title: "Open Shopping Hours",
     description: "Browse our collection during regular hours",
-    details: ["Tuesday-Thursday", "10am-5pm", "Walk-ins welcome"],
     icon: Clock,
+    details: [
+      { text: regularHours.days, emphasis: true },
+      { text: regularHours.hours, emphasis: true },
+      { text: "Walk-ins welcome" },
+    ],
   },
   {
     title: "Private Appointments",
     description: "One-on-one personalized shopping experience",
-    details: ["60-minute sessions", "Dedicated stylist", "Flexible scheduling"],
     icon: Calendar,
+    details: [
+      { text: "60-minute sessions" },
+      { text: "Dedicated stylist" },
+      { text: "Flexible scheduling" },
+    ],
   },
 ];
 
@@ -85,11 +99,13 @@ export default function Visit() {
               >
                 {option.details.map((detail) => (
                   <motion.li
-                    key={detail}
+                    key={detail.text}
                     variants={item}
-                    className="text-content-secondary"
+                    className={`text-content-secondary ${
+                      detail.emphasis ? "font-bold" : ""
+                    }`}
                   >
-                    {detail}
+                    {detail.text}
                   </motion.li>
                 ))}
               </motion.ul>
