@@ -33,10 +33,10 @@ export function Nav() {
   }, [isOpen]);
 
   return (
-    <nav className="fixed w-full top-0 z-50">
-      <div className="bg-surface-primary border-b border-ui-card-border">
+    <nav className="sticky w-full top-0 z-50">
+      <div className="bg-surface-primary/90 backdrop-blur border-b-2 border-ui-card-border">
         <div className="container mx-auto">
-          <div className="flex justify-between h-16">
+          <div className="flex justify-between p-4">
             <div className="flex items-center">
               <Link
                 href="/"
@@ -65,7 +65,7 @@ export function Nav() {
               variant="secondary"
               size="sm"
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden relative self-center z-50"
+              className="md:hidden relative self-center z-[500]"
               aria-expanded={isOpen}
             >
               {isOpen ? (
@@ -85,7 +85,7 @@ export function Nav() {
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
-        <div className="flex flex-col justify-between h-[100dvh] p-6">
+        <div className="flex flex-col justify-between min-h-dvh p-6">
           <div>
             <Link
               href="/"
