@@ -1,7 +1,7 @@
 // src/app/contact/page.tsx
 import PageHero from "@/components/ui/page-hero";
-import ContactForm from "./components/form";
-import QuickContact from "./components/quick-contact";
+import { ContactForm } from "@/components/ui/contact-form";
+import QuickContact from "@/components/ui/quick-contact";
 
 export default function ContactPage() {
   return (

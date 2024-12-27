@@ -1,4 +1,4 @@
-// src/app/contact/components/quick-contact.tsx
+// src/components/ui/quick-contact.tsx
 "use client";
 
 import { motion } from "framer-motion";
@@ -6,7 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Phone, Mail, Clock, MapPin } from "lucide-react";
 import { businessInfo, formatPhoneNumber } from "@/lib/config/contact";
 
-export default function QuickContact() {
+interface QuickContactProps {
+  showBooking?: boolean;
+}
+
+export default function QuickContact({
+  showBooking = true,
+}: QuickContactProps) {
   const { phone, email } = businessInfo.contact;
 
   return (
@@ -38,9 +44,11 @@ export default function QuickContact() {
           <div className="flex items-center gap-3">
             <Clock className="h-5 w-5 text-ui-button" />
             <div>
-              <p>Tuesday-Thursday: 10am-5pm</p>
-              <p className="text-content-secondary">
-                Private appointments available
+              {businessInfo.hours.regular.map(({ days, hours }) => (
+                <p key={days}>{`${days}: ${hours}`}</p>
+              ))}
+              <p className="text-content-secondary mt-1">
+                {businessInfo.hours.notes}
               </p>
             </div>
           </div>
@@ -60,29 +68,25 @@ export default function QuickContact() {
           </a>
         </div>
       </div>
-      <div className="card-base">
-        <h3 className="display-heading text-display-base mb-4">
-          Ready to Visit?
-        </h3>
-        <p className="text-content-secondary mb-4">
-          Schedule your private appointment or visit during open hours
-        </p>
-        <div className="space-y-4">
-          <Button
-            className="w-full"
-            onClick={() => (window.location.href = "/visit")}
-          >
-            Book Appointment
-          </Button>
-          <Button
-            variant="outline"
-            className="w-full"
-            onClick={() => (window.location.href = "/visit#location")}
-          >
-            View Hours & Location
-          </Button>
+
+      {showBooking && (
+        <div className="card-base">
+          <h3 className="display-heading text-display-base mb-4">
+            Ready to Visit?
+          </h3>
+          <p className="text-content-secondary mb-4">
+            Schedule your private appointment or visit during open hours
+          </p>
+          <div className="space-y-4">
+            <Button
+              className="w-full"
+              onClick={() => (window.location.href = "/visit")}
+            >
+              Book Appointment
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 }

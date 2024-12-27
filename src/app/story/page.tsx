@@ -1,7 +1,7 @@
 // src/app/story/page.tsx
 import PageHero from "@/components/ui/page-hero";
 import StoryContent from "./components/content";
-import StoryCTA from "./components/cta";
+import ActionCTA from "@/components/ui/action-cta";
 
 export default function StoryPage() {
   return (
@@ -11,7 +11,11 @@ export default function StoryPage() {
         subtitle="Personal service for life's special moments"
       />
       <StoryContent />
-      <StoryCTA />
+      <ActionCTA
+        title="Ready to Find Your Perfect Dress?"
+        primaryAction={{ label: "View Collections", href: "/collections" }}
+        secondaryAction={{ label: "Plan Your Visit", href: "/visit" }}
+      />
     </>
   );
 }

@@ -73,29 +73,6 @@ export default function CollectionsGallery() {
             ))}
           </div>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-20"
-        >
-          <h2 className="display-heading text-display-lg mb-6">
-            Ready to Try Something On?
-          </h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" onClick={() => (window.location.href = "/visit")}>
-              Plan Your Visit
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              onClick={() => (window.location.href = "/contact")}
-            >
-              Contact Us
-            </Button>
-          </div>
-        </motion.div>
       </div>
     </section>
   );
