@@ -23,9 +23,7 @@ export default function QuickContact({
       className="space-y-8"
     >
       <div className="card-base">
-        <h3 className="display-heading text-display-base mb-6">
-          Quick Contact
-        </h3>
+        <h3 className="display-heading text-display-base mb-6">Contact</h3>
         <div className="space-y-4">
           <a
             href={`tel:${phone}`}

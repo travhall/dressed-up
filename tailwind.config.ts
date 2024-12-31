@@ -84,9 +84,15 @@ export default {
           "2rem",
           { lineHeight: "1.3", letterSpacing: "-0.02em" },
         ],
+        "display-md": [
+          "1.5rem",
+          { lineHeight: "1.3", letterSpacing: "-0.02em" },
+        ],
+        "display-sm": ["1rem", { lineHeight: "1.3", letterSpacing: "-0.02em" }],
         // Body sizes
         "body-lg": ["1.25rem", { lineHeight: "1.5" }],
         "body-base": ["1rem", { lineHeight: "1.5" }],
+        "body-sm": ["1rem", { lineHeight: ".75" }],
       },
     },
   },

@@ -7,8 +7,8 @@ export default function CollectionsPage() {
   return (
     <>
       <PageHero
-        title="Our Collections"
-        subtitle="Special occasion dresses from $50-$500"
+        title="Our Curated Collections"
+        subtitle="Expertly crafted dresses for every special moment, priced $50-$500"
       />
       <CollectionsGallery />
       <ActionCTA

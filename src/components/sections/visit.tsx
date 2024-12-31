@@ -57,22 +57,8 @@ const item = {
 
 export default function Visit() {
   return (
-    <section className="py-20">
+    <section className="py-20 bg-surface-secondary">
       <div className="container mx-auto px-4">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="display-heading text-display-xl mb-4">
-            Plan Your Visit
-          </h2>
-          <p className="text-content-secondary text-body-lg">
-            Choose your shopping experience
-          </p>
-        </motion.div>
-
         <div className="grid md:grid-cols-2 gap-8">
           {VISIT_OPTIONS.map((option) => (
             <motion.div
@@ -81,7 +67,7 @@ export default function Visit() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="card-base transition-shadow hover:shadow-lg"
+              className="card-base bg-surface-primary transition-shadow hover:shadow-lg"
             >
               <option.icon className="h-8 w-8 mb-6 text-ui-button" />
               <h3 className="display-heading text-display-base mb-4">

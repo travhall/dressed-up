@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Logo from "@/components/ui/logo";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
@@ -38,11 +39,8 @@ export function Nav() {
         <div className="container mx-auto">
           <div className="flex justify-between p-4">
             <div className="flex items-center">
-              <Link
-                href="/"
-                className="text-2xl font-display text-content-primary"
-              >
-                Dressed Up
+              <Link onClick={() => setIsOpen(false)} href="/">
+                <Logo />
               </Link>
             </div>
 
@@ -80,21 +78,13 @@ export function Nav() {
 
       <div
         className={cn(
-          "fixed inset-0 bg-surface-primary md:hidden min-h-screen",
+          "fixed inset-0 top-16 bg-surface-primary/90 backdrop-blur md:hidden min-h-screen",
           "transition-all duration-500 ease-in-out",
           isOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         )}
       >
         <div className="flex flex-col justify-between min-h-dvh p-6">
           <div>
-            <Link
-              href="/"
-              onClick={() => setIsOpen(false)}
-              className="text-2xl font-display text-content-primary block mb-16"
-            >
-              Dressed Up
-            </Link>
-
             <div className="flex flex-col items-start space-y-16">
               {NAV_ITEMS.map((item, i) => (
                 <Link

@@ -8,7 +8,7 @@ export default function ContactPage() {
     <>
       <PageHero
         title="Start a Conversation"
-        subtitle="We're here to help with your special occasion"
+        subtitle="We're here to help you look your best for your special occasion"
       />
       <section className="py-20 bg-surface-secondary">
         <div className="container mx-auto px-4">

@@ -1,9 +1,9 @@
 // src/app/visit/page.tsx
 import PageHero from "@/components/ui/page-hero";
-import { Button } from "@/components/ui/button";
-import VisitOptions from "./components/options";
+import VisitOptions from "@/components/sections/visit"; // Using the shared component
 import PrepGuide from "./components/prep-guide";
-import Location from "./components/location";
+import WhatToExpect from "./components/what-to-expect";
+import Location from "@/components/ui/location";
 
 export default function VisitPage() {
   return (
@@ -11,10 +11,9 @@ export default function VisitPage() {
       <PageHero
         title="Plan Your Visit"
         subtitle="Choose your shopping experience"
-      >
-        <Button size="lg">Book Private Appointment</Button>
-      </PageHero>
+      />
       <VisitOptions />
+      <WhatToExpect />
       <PrepGuide />
       <Location />
     </>

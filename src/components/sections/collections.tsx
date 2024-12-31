@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { SITE_IMAGES } from "@/lib/media/images";
 
@@ -71,7 +72,7 @@ export default function Collections() {
                 />
               </div>
               <div className="py-6">
-                <h3 className="text-display-base font-bold mb-2">
+                <h3 className="text-display-base font-display font-light mb-2">
                   {collection.title}
                 </h3>
                 <p className="text-content-secondary mb-4">
@@ -98,6 +99,19 @@ export default function Collections() {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mt-16"
+        >
+          <p className="text-content-secondary text-body-lg">
+            <Button onClick={() => (window.location.href = "/collections")}>
+              View Our Collections
+            </Button>
+          </p>
+        </motion.div>
       </div>
     </section>
   );
