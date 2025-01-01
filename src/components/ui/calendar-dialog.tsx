@@ -20,13 +20,17 @@ export function CalendarDialog({ onSelect }: CalendarDialogProps) {
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="w-full justify-start text-left font-normal border-none"
+          className="w-full justify-start text-left font-normal bg-ui-input-surface border-ui-input-border hover:bg-surface-secondary"
         >
-          <LucideCalendar className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP") : <span>Pick a date</span>}
+          <LucideCalendar className="mr-2 h-4 w-4 text-content-tertiary" />
+          {date ? (
+            <span className="text-content-primary">{format(date, "PPP")}</span>
+          ) : (
+            <span className="text-content-tertiary">Pick a date</span>
+          )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
           selected={date}
@@ -36,8 +40,8 @@ export function CalendarDialog({ onSelect }: CalendarDialogProps) {
               onSelect(newDate);
             }
           }}
-          autoFocus
           disabled={(date) => date < new Date()}
+          autoFocus
         />
       </PopoverContent>
     </Popover>

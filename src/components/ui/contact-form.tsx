@@ -18,7 +18,7 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     setValue,
   } = useForm<ContactFormData>();
 
@@ -34,27 +34,34 @@ export function ContactForm() {
       className="card-base"
     >
       <h2 className="display-heading text-display-lg mb-6">Send a Message</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
-          <label htmlFor="name" className="block text-content-secondary mb-2">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+        <div className="space-y-2">
+          <label
+            htmlFor="name"
+            className="block text-content-secondary text-body-base"
+          >
             Name
           </label>
           <input
             {...register("name", { required: "Name is required" })}
             id="name"
             type="text"
-            className="input-base w-full"
+            className="input-base"
+            disabled={isSubmitting}
             aria-invalid={errors.name ? "true" : "false"}
           />
           {errors.name && (
-            <p className="text-state-error-surface text-sm mt-1">
+            <p className="text-state-error-surface text-body-sm mt-1">
               {errors.name.message}
             </p>
           )}
         </div>
 
-        <div>
-          <label htmlFor="email" className="block text-content-secondary mb-2">
+        <div className="space-y-2">
+          <label
+            htmlFor="email"
+            className="block text-content-secondary text-body-base"
+          >
             Email
           </label>
           <input
@@ -67,18 +74,22 @@ export function ContactForm() {
             })}
             id="email"
             type="email"
-            className="input-base w-full"
+            className="input-base"
+            disabled={isSubmitting}
             aria-invalid={errors.email ? "true" : "false"}
           />
           {errors.email && (
-            <p className="text-state-error-surface text-sm mt-1">
+            <p className="text-state-error-surface text-body-sm mt-1">
               {errors.email.message}
             </p>
           )}
         </div>
 
-        <div>
-          <label htmlFor="phone" className="block text-content-secondary mb-2">
+        <div className="space-y-2">
+          <label
+            htmlFor="phone"
+            className="block text-content-secondary text-body-base"
+          >
             Phone
           </label>
           <input
@@ -91,45 +102,51 @@ export function ContactForm() {
             })}
             id="phone"
             type="tel"
-            className="input-base w-full"
+            className="input-base"
+            disabled={isSubmitting}
             aria-invalid={errors.phone ? "true" : "false"}
           />
           {errors.phone && (
-            <p className="text-state-error-surface text-sm mt-1">
+            <p className="text-state-error-surface text-body-sm mt-1">
               {errors.phone.message}
             </p>
           )}
         </div>
 
-        <div>
-          <label className="block text-content-secondary mb-2">
+        <div className="space-y-2">
+          <label className="block text-content-secondary text-body-base">
             Event Date
           </label>
           <CalendarDialog onSelect={(date) => setValue("eventDate", date)} />
         </div>
 
-        <div>
+        <div className="space-y-2">
           <label
             htmlFor="message"
-            className="block text-content-secondary mb-2"
+            className="block text-content-secondary text-body-base"
           >
             Message
           </label>
           <textarea
             {...register("message", { required: "Message is required" })}
             id="message"
-            className="input-base w-full h-32"
+            className="input-base min-h-32 resize-y"
+            disabled={isSubmitting}
             aria-invalid={errors.message ? "true" : "false"}
           />
           {errors.message && (
-            <p className="text-state-error-surface text-sm mt-1">
+            <p className="text-state-error-surface text-body-sm mt-1">
               {errors.message.message}
             </p>
           )}
         </div>
 
-        <Button type="submit" className="w-full">
-          Send Message
+        <Button
+          type="submit"
+          className="w-full bg-ui-button text-ui-button-text hover:bg-ui-button-hover"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Sending..." : "Send Message"}
         </Button>
       </form>
     </motion.div>

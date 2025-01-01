@@ -45,32 +45,32 @@
   }
 
   .dark {
-    --surface-primary: 300 6% 12%;
-    --surface-secondary: 300 6% 15%;
-    --surface-tertiary: 300 6% 18%;
+    --surface-primary: 300 16% 12%;
+    --surface-secondary: 300 16% 15%;
+    --surface-tertiary: 300 16% 18%;
 
     --ui-nav-surface: 300 6% 15%;
-    --ui-nav-text: 40 20% 98%;
-    --ui-nav-hover: 40 23% 76%;
+    --ui-nav-text: 65 20% 98%;
+    --ui-nav-hover: 65 23% 76%;
 
-    --ui-button: 40 23% 76%;
-    --ui-button-hover: 40 19% 68%;
-    --ui-button-active: 40 10% 52%;
+    --ui-button: 65 23% 76%;
+    --ui-button-hover: 65 19% 68%;
+    --ui-button-active: 65 10% 52%;
     --ui-button-text: 300 6% 12%;
 
-    --ui-input-surface: 300 6% 15%;
+    --ui-input-surface: 300 16% 15%;
     --ui-input-border: 300 8% 20%;
-    --ui-input-focus: 40 23% 76%;
+    --ui-input-focus: 65 23% 76%;
 
-    --ui-card-surface: 300 6% 15%;
-    --ui-card-border: 300 6% 18%;
+    --ui-card-surface: 300 16% 15%;
+    --ui-card-border: 300 16% 18%;
 
-    --content-primary: 40 20% 98%;
-    --content-secondary: 40 23% 76%;
-    --content-tertiary: 40 19% 68%;
+    --content-primary: 65 20% 98%;
+    --content-secondary: 65 23% 76%;
+    --content-tertiary: 65 19% 68%;
     --content-accent: 300 14% 66%;
 
-    --focus-ring: 40 23% 76%;
+    --focus-ring: 65 23% 76%;
     --focus-ring-offset: 300 6% 12%;
   }
 }
@@ -108,5 +108,10 @@
     @apply w-full px-3 py-2 bg-ui-input-surface border border-ui-input-border rounded-md
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ui-button 
     disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .rdp-button_previous .rdp-chevron polygon,
+  .rdp-button_next .rdp-chevron polygon {
+    @apply fill-current;
   }
 }
