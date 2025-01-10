@@ -65,8 +65,16 @@ export default function Visit() {
               key={option.title}
               whileHover={{ y: -5 }}
               initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }} // Add this line
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{
+                once: true,
+                amount: 0.3, // Add this - triggers animation when 30% of element is visible
+                margin: "50px", // Add this - starts animation 50px before element enters viewport
+              }}
+              transition={{
+                duration: 0.5,
+              }}
               className="card-base bg-surface-primary transition-shadow hover:shadow-lg"
             >
               <option.icon className="h-8 w-8 mb-6 text-ui-button" />

@@ -49,6 +49,7 @@ export default function PageHero({
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35 }}
           className={layout === "default" ? "max-w-3xl" : ""}
         >
           <h1 className="display-heading text-display-lg lg:text-display-2xl mb-4 text-balance">
@@ -71,7 +72,7 @@ export default function PageHero({
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.35 }}
           >
             <div className="relative rounded-lg overflow-hidden shadow-xl">
               <Image

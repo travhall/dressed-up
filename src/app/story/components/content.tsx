@@ -18,9 +18,17 @@ export default function StoryContent() {
         <div className="card-base bg-surface-primary">
           <div className="grid md:grid-cols-2 place-items-center gap-12">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }} // Add this line
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{
+                once: true,
+                amount: 0.3, // Add this - triggers animation when 30% of element is visible
+                margin: "50px", // Add this - starts animation 50px before element enters viewport
+              }}
+              transition={{
+                duration: 0.5,
+              }}
             >
               <h2 className="display-heading text-display-lg mb-6">
                 Welcome to Dressed Up
@@ -46,9 +54,17 @@ export default function StoryContent() {
               </div>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{
+                once: true,
+                amount: 0.3, // Add this - triggers animation when 30% of element is visible
+                margin: "50px", // Add this - starts animation 50px before element enters viewport
+              }}
+              transition={{
+                duration: 0.5,
+              }}
               className="relative aspect-[4/3] rounded-lg overflow-hidden"
             >
               <Image

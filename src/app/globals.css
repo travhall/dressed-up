@@ -6,31 +6,31 @@
 @layer base {
   :root {
     /* Foundation */
-    --surface-primary: 300 20% 98%;
-    --surface-secondary: 300 15% 95%;
-    --surface-tertiary: 300 10% 92%;
+    --surface-primary: 340 20% 98%;
+    --surface-secondary: 340 15% 95%;
+    --surface-tertiary: 340 10% 92%;
 
     /* UI Elements */
-    --ui-nav-surface: 300 15% 95%;
-    --ui-nav-text: 300 6% 38%;
-    --ui-nav-hover: 300 8% 50%;
+    --ui-nav-surface: 340 15% 95%;
+    --ui-nav-text: 340 6% 38%;
+    --ui-nav-hover: 340 8% 50%;
 
-    --ui-button: 300 35% 35%;
-    --ui-button-hover: 300 40% 30%;
-    --ui-button-active: 300 14% 66%;
+    --ui-button: 340 35% 35%;
+    --ui-button-hover: 340 40% 30%;
+    --ui-button-active: 340 14% 66%;
     --ui-button-text: 0 0% 100%;
 
     --ui-input-surface: 40 20% 98%;
-    --ui-input-border: 300 15% 95%;
-    --ui-input-focus: 300 19% 80%;
+    --ui-input-border: 340 15% 95%;
+    --ui-input-focus: 340 19% 80%;
 
     --ui-card-surface: 40 20% 98%;
     --ui-card-border: 40 25% 95%;
 
     /* Content */
-    --content-primary: 300 30% 15%;
-    --content-secondary: 300 25% 25%;
-    --content-tertiary: 300 20% 35%;
+    --content-primary: 340 30% 15%;
+    --content-secondary: 340 25% 25%;
+    --content-tertiary: 340 20% 35%;
     --content-accent: 40 23% 76%;
 
     /* States */
@@ -40,38 +40,38 @@
     --state-error-text: 0 0% 100%;
 
     /* Focus states */
-    --focus-ring: 300 30% 40%;
-    --focus-ring-offset: 300 20% 98%;
+    --focus-ring: 340 30% 40%;
+    --focus-ring-offset: 340 20% 98%;
   }
 
   .dark {
-    --surface-primary: 300 16% 12%;
-    --surface-secondary: 300 16% 15%;
-    --surface-tertiary: 300 16% 18%;
+    --surface-primary: 340 16% 12%;
+    --surface-secondary: 340 16% 15%;
+    --surface-tertiary: 340 16% 18%;
 
-    --ui-nav-surface: 300 6% 15%;
-    --ui-nav-text: 65 20% 98%;
-    --ui-nav-hover: 65 23% 76%;
+    --ui-nav-surface: 340 6% 15%;
+    --ui-nav-text: 75 20% 98%;
+    --ui-nav-hover: 75 23% 76%;
 
-    --ui-button: 65 23% 76%;
-    --ui-button-hover: 65 19% 68%;
-    --ui-button-active: 65 10% 52%;
-    --ui-button-text: 300 6% 12%;
+    --ui-button: 75 23% 76%;
+    --ui-button-hover: 75 19% 68%;
+    --ui-button-active: 75 10% 52%;
+    --ui-button-text: 340 6% 12%;
 
-    --ui-input-surface: 300 16% 15%;
-    --ui-input-border: 300 8% 20%;
-    --ui-input-focus: 65 23% 76%;
+    --ui-input-surface: 340 16% 15%;
+    --ui-input-border: 340 8% 20%;
+    --ui-input-focus: 75 23% 76%;
 
-    --ui-card-surface: 300 16% 15%;
-    --ui-card-border: 300 16% 18%;
+    --ui-card-surface: 340 16% 15%;
+    --ui-card-border: 340 16% 18%;
 
-    --content-primary: 65 20% 98%;
-    --content-secondary: 65 23% 76%;
-    --content-tertiary: 65 19% 68%;
-    --content-accent: 300 14% 66%;
+    --content-primary: 75 20% 98%;
+    --content-secondary: 75 23% 76%;
+    --content-tertiary: 75 19% 68%;
+    --content-accent: 340 14% 66%;
 
-    --focus-ring: 65 23% 76%;
-    --focus-ring-offset: 300 6% 12%;
+    --focus-ring: 75 23% 76%;
+    --focus-ring-offset: 340 6% 12%;
   }
 }
 
